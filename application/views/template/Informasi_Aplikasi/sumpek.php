@@ -1,0 +1,2 @@
+<p align="justify">Selamat datang di <a target="_blank" rel="nofollow" href="https://undraw.co/">System Antrian rumah Sakit INI</a>,Kondisi Antrian Sedang Hampir Penuh, <b>Mohon Bersabar dan mnegantri dengan benar</b></p>
+                  <a target="_blank" rel="nofollow" href="https://undraw.co/">www.antrianrsektp.site &rarr;</a>
