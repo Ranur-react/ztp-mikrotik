@@ -31,10 +31,15 @@ public function index()
 	     $us=$this->input->post('un',true);
 	     $pas=$this->input->post('pw',true);
 	     if ($this->mikapi->Connect($ip,$us,$pas)=="Connected") {
-	     			$this->DbLogin->insert($ip,$us,$pas);
-	                redirect(site_url('Home'));
+	     			
+					 if($this->DbLogin->insert($ip,$us,$pas)){
+						//  redirect(site_url('Home'));
+						 echo "Berhasil Login";
+					 }else{
+						echo	"data login gagal disimpan";
+					 }
 	     }else{
-					echo "Password / username salah";
+					echo "IP , Password &  username tidak diterima Perangkat";
 
 	     }
  }

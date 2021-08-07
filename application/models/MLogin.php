@@ -9,13 +9,17 @@ class MLogin extends CI_Model
 	
 	function insert($ip,$us,$pw)
 	{
-		$count=$this->count();
-		if ($count['val']>0) {
-				# code...
-			 $this->db->query("DELETE FROM `tb_remotelogin`");
+		// $count=$this->count();
+		// if ($count['val']>0) {
+		// 		# code...
+		// 	 $this->db->query("DELETE FROM `tb_remotelogin`");
 				
-			}
-			 $this->db->query("INSERT INTO `tb_remotelogin`(`no`,`ip`,`username`,`password`) VALUES ( NULL,'$ip','$us','$pw');");
+		// 	}
+		echo $ip;
+		echo $us;
+		echo $pw;
+			//  $this->db->query("INSERT INTO `tb_remotelogin`  VALUES ( NULL,'$ip','$us','$pw');");
+			 $this->db->query("INSERT INTO `tb_remotelogin` (`no`,`ip`,`username`,`password`) VALUES ( NULL,'192.168.18.1','adminx',NULL);");
 				
 	}
 	// public function update($ip,$us,$pw)
