@@ -16,42 +16,66 @@ class Setting extends CI_Controller
 
   public function index()
   {
-      $bridgename='bridgelocal';
-      $ip='192.168.200.1/24';
-      $ipaddress='192.168.200.1';
-      $networkAddress='192.168.200.0/24';
-      $range='192.168.200.2-192.168.200.254';
-      $ipNetworkTimeProtocol='202.162.32.12';
-      $etherWAN='ether1';
-      $poolname='hotspotpool';
-      $profileHotspotName='HotspotProf';
-      $HotspotName='HotspotAuto';
-      $dhcpname='dhcpAuto';
-      $domain='rifki.com';
-      $outinterface='ether1';
-   $this->MembuatBridgebaru($bridgename);
-//    $this->MenambahportBridgeLocal($bridgename,'ether2');
-   $this->MenambahportBridgeLocal($bridgename,'ether3');
-   $this->MenambahportBridgeLocal($bridgename,'ether4');
-   $this->MenambahportBridgeLocal($bridgename,'wlan1');
-   $this->Settingip($bridgename,$ip);
-   $this->addNetworkDHCP($networkAddress,$ipaddress);
-   $this->addpool($poolname,$range);
-   $this->addDHCPServer($dhcpname,$bridgename,$poolname);
-   $dhcpid=$this->ambilnumDHCP($dhcpname);
-   $this->enableDHCP($dhcpid);
-   $this->SettingWANdanRouteAuto($etherWAN);
-   $id= $this->ambilnumDHCPCLIENT($outinterface);
-   $this->setFirewallNat($outinterface);
-   $this->setNTPClient($ipNetworkTimeProtocol);
-   $this->enableSettingWANdanRouteAuto($id);
-  //  $this->SetupHotspot($bridgename);
-   $this->addProfileHotspot($profileHotspotName,$ipaddress,$domain);
-   $this->addHotspot($profileHotspotName,$HotspotName,$bridgename,$poolname);
-   $idhotspot= $this->ambilnumHotspot($HotspotName);
-   $this->enableHotspot($idhotspot);
-   $this->addUserHotspot('adminx','1234',$HotspotName);
-   
+    $bridgename = 'bridgeiki';
+    $ip = '192.168.200.1/24';
+    $ipaddress = '192.168.200.1';
+    $networkAddress = '192.168.200.0/24';
+    $range = '192.168.200.2-192.168.200.254';
+    $ipNetworkTimeProtocol = '202.162.32.12';
+    $etherWAN = 'ether1';
+    $poolname = 'hotspotpool';
+    $profileHotspotName = 'HotspotProf';
+    $HotspotName = 'HotspotAuto';
+    $dhcpname = 'dhcpAuto';
+    $domain = 'rifki.com';
+    $outinterface = 'ether1';
+    $this->MembuatBridgebaru($bridgename);
+    //    $this->MenambahportBridgeLocal($bridgename,'ether2');
+    $this->MenambahportBridgeLocal($bridgename, 'ether3');
+    $this->MenambahportBridgeLocal($bridgename, 'ether4');
+    $this->MenambahportBridgeLocal($bridgename, 'wlan1');
+    $this->Settingip($bridgename, $ip);
+    $this->addNetworkDHCP($networkAddress, $ipaddress);
+    $this->addpool($poolname, $range);
+    $this->addDHCPServer($dhcpname, $bridgename, $poolname);
+    $dhcpid = $this->ambilnumDHCP($dhcpname);
+    $this->enableDHCP($dhcpid);
+    $this->SettingWANdanRouteAuto($etherWAN);
+    $id = $this->ambilnumDHCPCLIENT($outinterface);
+    $this->setFirewallNat($outinterface);
+    $this->setNTPClient($ipNetworkTimeProtocol);
+    $this->enableSettingWANdanRouteAuto($id);
+    //  $this->SetupHotspot($bridgename);
+    $this->addProfileHotspot($profileHotspotName, $ipaddress, $domain);
+    $this->addHotspot($profileHotspotName, $HotspotName, $bridgename, $poolname);
+    $idhotspot = $this->ambilnumHotspot($HotspotName);
+    $this->enableHotspot($idhotspot);
+    $this->addUserHotspot('adminx', '1234', $HotspotName);
+    $this->editWirellesName('rifkihotspot@ztpsetting');
+    redirect(site_url('Home'));
+  }
+  public function editWirellesName($namawifi)
+  {
+    $id = $this->ambilnumwirelles('wlan1');
+    $data = $this->DbLogin->show();
+    $Code['command'] = "/interface/wireless/set"; //perntah
+    $Code['ArrayValue'] = array(         //value dari perintah
+      '.id' => $id,
+      'ssid' => $namawifi,
+    );;
+    $this->mikapi->write($Code, $data);
+  }
+  public function ambilnumwirelles($int)
+  {
+    $data = $this->DbLogin->show();
+    $Code['command'] = "/interface/wireless/print"; //perntah
+    $Code['ArrayValue'] = array(         //value dari perintah
+      '?name' => $int,
+    );
+    $datax = $this->mikapi->write($Code, $data);
+    $d = $datax[0];
+    // echo  $d['.id'];
+    return $d['.id'];
   }
   public function setNTPClient($ipNetworkTimeProtocol)
   {
@@ -95,7 +119,7 @@ class Setting extends CI_Controller
     $d = $datax[0];
     return $d['.id'];
   }
-  public function addDHCPServer($dhcpname,$interface,$poool)
+  public function addDHCPServer($dhcpname, $interface, $poool)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/ip/dhcp-server/add"; //perntah
@@ -106,7 +130,7 @@ class Setting extends CI_Controller
     );;
     $this->mikapi->write($Code, $data);
   }
-  public function addNetworkDHCP($networkAddress,$gateway)
+  public function addNetworkDHCP($networkAddress, $gateway)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/ip/dhcp-server/network/add"; //perntah
@@ -116,7 +140,7 @@ class Setting extends CI_Controller
     );;
     $this->mikapi->write($Code, $data);
   }
-  public function addUserHotspot($username,$password,$HotspotName)
+  public function addUserHotspot($username, $password, $HotspotName)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/ip/hotspot/user/add"; //perntah
@@ -148,7 +172,7 @@ class Setting extends CI_Controller
     $d = $datax[0];
     return $d['.id'];
   }
-  public function addHotspot($profileHotspotName,$HotspotName,$bridgename,$poolname)
+  public function addHotspot($profileHotspotName, $HotspotName, $bridgename, $poolname)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/ip/hotspot/add"; //perntah
@@ -160,7 +184,7 @@ class Setting extends CI_Controller
     );;
     $this->mikapi->write($Code, $data);
   }
-  public function addpool($poolname,$range)
+  public function addpool($poolname, $range)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/ip/pool/add"; //perntah
@@ -170,7 +194,7 @@ class Setting extends CI_Controller
     );;
     $this->mikapi->write($Code, $data);
   }
-  public function addProfileHotspot($profileHotspotName,$ipaddress,$domain)
+  public function addProfileHotspot($profileHotspotName, $ipaddress, $domain)
   {
     // ip hotspot profile add name=hotspotp hotspot-address=192.168.20
     // 0.1 dns-name=hotspot.com login-by=http-chap,cookie http-cookie-lifetime=1d
@@ -224,23 +248,23 @@ class Setting extends CI_Controller
     );;
     $this->mikapi->write($Code, $data);
   }
-  public function MenambahportBridgeLocal($bridgename,$ether)
+  public function MenambahportBridgeLocal($bridgename, $ether)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/interface/bridge/port/add"; //perntah
     $Code['ArrayValue'] = array(         //value dari perintah
       'interface' => $ether,
-      'bridge'=>$bridgename,
+      'bridge' => $bridgename,
     );;
     $this->mikapi->write($Code, $data);
   }
-  public function Settingip($bridgename,$ip)
+  public function Settingip($bridgename, $ip)
   {
     $data = $this->DbLogin->show();
     $Code['command'] = "/ip/address/add"; //perntah
     $Code['ArrayValue'] = array(         //value dari perintah
       'address' => $ip,
-      'interface'=>$bridgename,
+      'interface' => $bridgename,
     );;
     $this->mikapi->write($Code, $data);
   }

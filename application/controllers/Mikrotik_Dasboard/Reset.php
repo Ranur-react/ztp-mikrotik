@@ -10,7 +10,7 @@ class Reset extends CI_Controller
   {
     parent::__construct();
     $this->load->model('MLogin', 'DbLogin');
-    $this->load->model('MBlokir');
+    // $this->load->model('MBlokir');
   }
 
 
@@ -21,14 +21,16 @@ class Reset extends CI_Controller
   }
   public function index()
   {
-    // $id1 = $this->ambilnumBRDGPort('ether3');
-    // $id2 = $this->ambilnumBRDGPort('ether4');
-     $id3 = $this->ambilnumBRDGPort('wlan1');
-     
-    // $this->disableBRIDGEPort($id1);
-    // $this->disableBRIDGEPort($id2);
-    // $this->disableBRIDGEPort($id3);
+    $id1 = $this->ambilnumBRDGPort('ether3');
+    $id2 = $this->ambilnumBRDGPort('ether4');
+    $id3 = $this->ambilnumBRDGPort('wlan1');
+    // var_dump($id3);
+    $this->disableBRIDGEPort($id1);
+    $this->disableBRIDGEPort($id2);
+    $this->disableBRIDGEPort($id3);
+    redirect(site_url('Home'));
   }
+
   public function ambilnumBRDGPort($i)
   {
     $data = $this->DbLogin->show();

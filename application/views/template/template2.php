@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Mikrotik Firewall</title>
+  <title>Mikrotik ZTP</title>
 
 
   <!-- Custom fonts for this template-->
@@ -48,7 +48,7 @@
           </button>
 
           <!-- Topbar Search -->
-               <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -93,17 +93,17 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="<?= base_url('img') ?>/undraw_profile.svg">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
-                
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
+
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
               </div>
             </li>
 
@@ -118,9 +118,10 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800 text-uppercase">{judul}</h1>
-         <!--    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Print Report</a> -->
+            <!--    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Print Report</a> -->
           </div>
           {konten}
+          {konten2}
         </div>
         <!-- /.container-fluid -->
 
@@ -158,7 +159,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Are you sure to leave as Administrator<br> by www.  </div>
+        <div class="modal-body">Are you sure to leave as Administrator<br> by www. </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href=" <?php echo site_url('awal'); ?>">Logout</a>
@@ -171,24 +172,25 @@
 </body>
 
 <!-- custome for this Script template -->
- <!-- Bootstrap core JavaScript-->
-  <script src="<?php echo base_url('asset/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="<?php echo base_url('asset/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="<?php echo base_url('asset/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="<?php echo base_url('asset/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="<?php echo base_url('asset/') ?>js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="<?php echo base_url('asset/') ?>js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url('asset/') ?>vendor/chart.js/Chart.min.js"></script>
+<!-- Page level plugins -->
+<script src="<?php echo base_url('asset/') ?>vendor/chart.js/Chart.min.js"></script>
 <!-- Tablse plugin -->
-  <!-- Page level plugins -->
-  <script src="<?php echo base_url('asset/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url('asset/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Page level plugins -->
+<script src="<?php echo base_url('asset/') ?>vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url('asset/') ?>vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="<?php echo base_url('asset/') ?>js/demo/datatables-demo.js"></script>
+<!-- Page level custom scripts -->
+<script src="<?php echo base_url('asset/') ?>js/demo/datatables-demo.js"></script>
 
-  <!-- Page level custom scripts -->
+<!-- Page level custom scripts -->
+
 </html>

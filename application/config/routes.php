@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['Home'] = 'Mikrotik_Dasboard/Home';
 $route['awal'] = 'Login/logout';
-$route['Firewall'] = 'Mikrotik_Dasboard/Firewall';
-$route['Firewall-Tambah'] = 'Mikrotik_Dasboard/Firewall/Tambahblokir';
-$route['Monitoring'] = 'Mikrotik_Dasboard/Monitoring';
+// $route['Firewall'] = 'Mikrotik_Dasboard/Firewall';
+// $route['Firewall-Tambah'] = 'Mikrotik_Dasboard/Firewall/Tambahblokir';
+$route['Setting'] = 'Mikrotik_Dasboard/Setting';
+$route['Reset'] = 'Mikrotik_Dasboard/Reset';
