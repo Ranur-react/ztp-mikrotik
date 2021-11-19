@@ -51,6 +51,8 @@ class Setting extends CI_Controller
     $idhotspot = $this->ambilnumHotspot($HotspotName);
     $this->enableHotspot($idhotspot);
     $this->addUserHotspot('adminx', '1234', $HotspotName);
+    $this->addUserHotspot('rifki', '12345', $HotspotName);
+    $this->addUserHotspot('ajo', '12345', $HotspotName);
     $this->editWirellesName('rifkihotspot@ztpsetting');
     redirect(site_url('Home'));
   }
@@ -215,9 +217,9 @@ class Setting extends CI_Controller
     $Code['command'] = "/ip/hotspot/setup"; //perntah
     $Code['ArrayValue'] = array(         //value dari perintah
       'interface' => $bridgename,
-      'network' => '192.168.200.1/24',
+      'network' => '192.168.13.1/24',
       'masquerade' => 'yes',
-      'pool' => '192.168.200.2-192.168.200.254',
+      'pool' => '192.168.13.2-192.168.13.254',
       'certificate' => 'none',
       'smtp server' => '0.0.0.0',
       'dns servers' => '8.8.8.8,8.8.4.4',

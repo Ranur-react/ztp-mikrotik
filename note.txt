@@ -1,0 +1,18 @@
+ipaddress :
+ -address
+ -network
+ -interface
+
+bridge	:
+ - interface
+ - bridge
+
+interface :
+-name
+-mac-address
+-disabled 	
+
+
+* Setting Hotspot Wifi Name (RifkiZTP@hostpot)
+* Membuat User Otomatis sebanyak 10 user
+* Menampilkan Hostspot
